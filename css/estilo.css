@@ -655,3 +655,70 @@ body{
   font-size:18px;
   letter-spacing:0.3px;
 }
+/* ===== BOTÃO PROFISSIONAL (CTA) ===== */
+.botao-comprar,
+.cta-fixo {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  text-decoration: none;
+  font-weight: 800;
+  border-radius: 14px;
+  transition: transform .15s ease, box-shadow .15s ease, filter .15s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.botao-comprar {
+  box-shadow: 0 14px 30px rgba(214, 51, 132, 0.25);
+}
+
+.botao-comprar:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 18px 38px rgba(214, 51, 132, 0.32);
+  filter: brightness(1.03);
+}
+
+.botao-comprar:active {
+  transform: translateY(0px) scale(0.99);
+}
+
+.botao-comprar::after {
+  content: "";
+  position: absolute;
+  top: -60%;
+  left: -40%;
+  width: 40%;
+  height: 220%;
+  transform: rotate(25deg);
+  background: rgba(255,255,255,0.35);
+  animation: shine 2.6s infinite;
+}
+
+@keyframes shine {
+  0% { left: -60%; opacity: 0; }
+  20% { opacity: .9; }
+  45% { left: 120%; opacity: 0; }
+  100% { left: 120%; opacity: 0; }
+}
+
+/* pulso suave */
+.botao-comprar {
+  animation: pulse 1.8s infinite;
+}
+
+@keyframes pulse {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-1px) scale(1.01); }
+  100% { transform: translateY(0); }
+}
+
+/* CTA fixo mobile mais "clicável" */
+.cta-fixo {
+  box-shadow: 0 14px 30px rgba(214, 51, 132, 0.25);
+}
+
+.cta-fixo:hover {
+  transform: translateY(-2px);
+}
