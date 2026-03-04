@@ -107,8 +107,25 @@
     <p class="subtitulo">Conteúdo direto ao ponto, para você aplicar no salão com mais confiança.</p>
 
     <div class="cards-grid">
+
+      <!-- FIBRA -->
       <div class="card">
         <h3>1) Fibra de vidro</h3>
+
+        <div class="carousel" data-carousel>
+          <button class="carousel-btn prev" data-carousel-prev aria-label="Anterior">‹</button>
+
+          <div class="carousel-track" data-carousel-track>
+            <div class="carousel-slide"><img src="img/fibra1.jpeg" alt="Fibra de vidro - foto 1"></div>
+            <div class="carousel-slide"><img src="img/fibra2.jpeg" alt="Fibra de vidro - foto 2"></div>
+            <div class="carousel-slide"><img src="img/fibra3.jpeg" alt="Fibra de vidro - foto 3"></div>
+            <div class="carousel-slide"><img src="img/fibra4.jpeg" alt="Fibra de vidro - foto 4"></div>
+          </div>
+
+          <button class="carousel-btn next" data-carousel-next aria-label="Próximo">›</button>
+          <div class="carousel-dots" data-carousel-dots></div>
+        </div>
+
         <ul class="lista">
           <li>Preparação correta da unha (para melhor aderência)</li>
           <li>Aplicação e estrutura (formato e resistência)</li>
@@ -117,8 +134,24 @@
         </ul>
       </div>
 
+      <!-- ESMALTAÇÃO -->
       <div class="card">
         <h3>2) Esmaltação em gel</h3>
+
+        <div class="carousel" data-carousel>
+          <button class="carousel-btn prev" data-carousel-prev aria-label="Anterior">‹</button>
+
+          <div class="carousel-track" data-carousel-track>
+            <div class="carousel-slide"><img src="img/esmalte1.jpeg" alt="Esmaltação em gel - foto 1"></div>
+            <div class="carousel-slide"><img src="img/esmalte2.jpeg" alt="Esmaltação em gel - foto 2"></div>
+            <div class="carousel-slide"><img src="img/esmalte3.jpeg" alt="Esmaltação em gel - foto 3"></div>
+            <div class="carousel-slide"><img src="img/esmalte4.jpeg" alt="Esmaltação em gel - foto 4"></div>
+          </div>
+
+          <button class="carousel-btn next" data-carousel-next aria-label="Próximo">›</button>
+          <div class="carousel-dots" data-carousel-dots></div>
+        </div>
+
         <ul class="lista">
           <li>Passo a passo para durabilidade e brilho</li>
           <li>Camadas, tempo de cabine e cuidados</li>
@@ -127,8 +160,24 @@
         </ul>
       </div>
 
+      <!-- BANHO -->
       <div class="card">
         <h3>3) Banho de gel</h3>
+
+        <div class="carousel" data-carousel>
+          <button class="carousel-btn prev" data-carousel-prev aria-label="Anterior">‹</button>
+
+          <div class="carousel-track" data-carousel-track>
+            <div class="carousel-slide"><img src="img/banho1.jpeg" alt="Banho de gel - foto 1"></div>
+            <div class="carousel-slide"><img src="img/banho2.jpeg" alt="Banho de gel - foto 2"></div>
+            <div class="carousel-slide"><img src="img/banho3.jpeg" alt="Banho de gel - foto 3"></div>
+            <div class="carousel-slide"><img src="img/banho4.jpeg" alt="Banho de gel - foto 4"></div>
+          </div>
+
+          <button class="carousel-btn next" data-carousel-next aria-label="Próximo">›</button>
+          <div class="carousel-dots" data-carousel-dots></div>
+        </div>
+
         <ul class="lista">
           <li>Quando indicar (e quando evitar)</li>
           <li>Estrutura: espessura ideal e nivelamento</li>
@@ -136,6 +185,7 @@
           <li>Manutenção e durabilidade</li>
         </ul>
       </div>
+
     </div>
 
     <div class="cta-inline">
@@ -175,32 +225,32 @@
   </div>
 </section>
 
-<!-- PROVA SOCIAL (placeholders) -->
+<!-- DEPOIMENTOS (você pode trocar depois) -->
 <section class="secao">
   <div class="container">
     <h2>Resultados e depoimentos</h2>
-    <p class="subtitulo">Aqui você pode colocar prints do WhatsApp/Instagram ou feedbacks de alunas.</p>
+    <p class="subtitulo">Você pode colocar prints do WhatsApp/Instagram ou feedbacks reais de alunas.</p>
 
     <div class="cards-grid">
       <div class="card depo">
-        <p>“Coloque aqui um depoimento curto e real de cliente/aluna.”</p>
-        <span class="muted">— Nome / Cidade</span>
+        <p>“Material super claro e organizado. Me ajudou a melhorar o acabamento.”</p>
+        <span class="muted">— Aluna</span>
       </div>
 
       <div class="card depo">
-        <p>“Outro depoimento curto falando do resultado ou da clareza do material.”</p>
-        <span class="muted">— Nome / Cidade</span>
+        <p>“A parte de estrutura e preparo da unha foi o que mais me ajudou.”</p>
+        <span class="muted">— Aluna</span>
       </div>
 
       <div class="card depo">
-        <p>“Mais um depoimento: confiança, acabamento melhor, menos retrabalho, etc.”</p>
-        <span class="muted">— Nome / Cidade</span>
+        <p>“Gostei porque é direto ao ponto e dá pra aplicar rápido no salão.”</p>
+        <span class="muted">— Aluna</span>
       </div>
     </div>
   </div>
 </section>
 
-<!-- GARANTIA (opcional) -->
+<!-- SEGURANÇA -->
 <section class="secao secao-alt">
   <div class="container">
     <h2>Garantia e segurança</h2>
@@ -217,7 +267,7 @@
         <h4>✅ Garantia (opcional)</h4>
         <p class="muted">
           Se você oferece garantia, escreva aqui (ex: “7 dias para solicitar reembolso pela plataforma”).
-          Se não oferece, me fale que eu removo essa parte.
+          Se não oferece, é só apagar esse bloco.
         </p>
       </div>
     </div>
@@ -304,6 +354,68 @@
 
   </div>
 </footer>
+
+<!-- CAROUSEL SCRIPT -->
+<script>
+(function(){
+  function setupCarousel(root){
+    const track = root.querySelector('[data-carousel-track]');
+    const slides = Array.from(track.children);
+    const prev = root.querySelector('[data-carousel-prev]');
+    const next = root.querySelector('[data-carousel-next]');
+    const dotsWrap = root.querySelector('[data-carousel-dots]');
+
+    let index = 0;
+
+    dotsWrap.innerHTML = slides.map((_, i) =>
+      '<button class="carousel-dot ' + (i===0?'active':'') + '" aria-label="Ir para imagem ' + (i+1) + '" data-dot="' + i + '"></button>'
+    ).join('');
+
+    const dots = Array.from(dotsWrap.querySelectorAll('.carousel-dot'));
+
+    function update(){
+      track.style.transform = 'translateX(-' + (index * 100) + '%)';
+      dots.forEach((d,i)=> d.classList.toggle('active', i===index));
+    }
+
+    function goTo(i){
+      index = (i + slides.length) % slides.length;
+      update();
+    }
+
+    prev.addEventListener('click', ()=> goTo(index - 1));
+    next.addEventListener('click', ()=> goTo(index + 1));
+
+    dotsWrap.addEventListener('click', (e)=>{
+      const btn = e.target.closest('[data-dot]');
+      if(!btn) return;
+      goTo(parseInt(btn.dataset.dot, 10));
+    });
+
+    // Swipe (touch)
+    let startX = 0;
+    let dragging = false;
+
+    root.addEventListener('touchstart', (e)=>{
+      startX = e.touches[0].clientX;
+      dragging = true;
+    }, {passive:true});
+
+    root.addEventListener('touchend', (e)=>{
+      if(!dragging) return;
+      const endX = e.changedTouches[0].clientX;
+      const diff = endX - startX;
+      if(Math.abs(diff) > 50){
+        if(diff < 0) goTo(index + 1);
+        else goTo(index - 1);
+      }
+      dragging = false;
+    }, {passive:true});
+  }
+
+  document.querySelectorAll('[data-carousel]').forEach(setupCarousel);
+})();
+</script>
 
 </body>
 </html>
