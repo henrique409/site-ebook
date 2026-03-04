@@ -633,3 +633,22 @@ body{
     max-height: 200px;
   }
 }
+
+/* ===== carrossel do topo (profissional1 / profissional2) ===== */
+.prof-carousel .carousel-slide{
+  aspect-ratio: 16/10;   /* maior e bonito */
+}
+
+.prof-carousel .carousel-slide img{
+  object-fit: contain;   /* mostra inteira */
+  background: #fff;
+}
+
+/* ===== foto professora2: inteira, menor, sem achatar ===== */
+.foto-grande-wrap img{
+  width: 100%;
+  max-height: 260px;     /* reduzida */
+  object-fit: contain;   /* inteira */
+  display: block;
+  background: #fff;
+}
