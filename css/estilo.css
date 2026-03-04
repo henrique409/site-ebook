@@ -599,3 +599,37 @@ body{
     z-index:999;
   }
 }
+/* ===== Carrossel do topo (profissional 1 e 2) ===== */
+.prof-carousel{
+  margin: 0 0 12px;
+}
+
+/* deixa maior e com proporção boa */
+.prof-carousel .carousel-slide{
+  aspect-ratio: 16/10; /* mais “deitado”, fica grande e elegante */
+}
+
+/* MOSTRA A FOTO INTEIRA (sem cortar) */
+.prof-carousel .carousel-slide img{
+  object-fit: contain;
+  background: #fff;
+}
+
+/* ===== Diminuir a foto da professora (mais embaixo) ===== */
+.foto-grande-wrap img{
+  width:100%;
+  max-height: 240px;  /* menor */
+  object-fit: cover;
+  display:block;
+}
+
+/* responsivo */
+@media (max-width:900px){
+  .prof-carousel .carousel-slide{
+    aspect-ratio: 16/11;
+  }
+
+  .foto-grande-wrap img{
+    max-height: 200px;
+  }
+}
