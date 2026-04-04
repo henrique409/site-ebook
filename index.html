@@ -21,12 +21,12 @@
     </a>
 
     <nav class="topo-links">
-      <a class="link-icone" href="https://instagram.com/studio.gabidummer.nails" target="_blank" rel="noopener">
-        <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram">
+      <a class="link-icone" href="https://instagram.com/studio.gabidummer.nails" target="_blank">
+        <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png">
       </a>
 
-      <a class="link-icone" href="https://wa.me/5519991046126?text=Olá%20vim%20pelo%20ebook%20de%20alongamento%20em%20gel" target="_blank" rel="noopener">
-        <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp">
+      <a class="link-icone" href="https://wa.me/5519991046126?text=Olá%20vim%20pelo%20ebook%20de%20alongamento%20em%20gel" target="_blank">
+        <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png">
       </a>
     </nav>
 
@@ -61,17 +61,9 @@
       <button class="carousel-btn prev" data-carousel-prev>‹</button>
 
       <div class="carousel-track" data-carousel-track>
-        <div class="carousel-slide">
-          <img src="img/professora2.jpg">
-        </div>
-
-        <div class="carousel-slide">
-          <img src="img/profissional1.jpeg">
-        </div>
-
-        <div class="carousel-slide">
-          <img src="img/profissional2.jpeg">
-        </div>
+        <div class="carousel-slide"><img src="img/professora2.jpg"></div>
+        <div class="carousel-slide"><img src="img/profissional1.jpeg"></div>
+        <div class="carousel-slide"><img src="img/profissional2.jpeg"></div>
       </div>
 
       <button class="carousel-btn next" data-carousel-next>›</button>
@@ -115,12 +107,44 @@
         <h3>Fibra de vidro</h3>
         <div class="carousel" data-carousel>
           <button class="carousel-btn prev" data-carousel-prev>‹</button>
-          <div class="carousel-track" data-carousel-track">
+          <div class="carousel-track" data-carousel-track>
             <div class="carousel-slide"><img src="img/fibra1.jpeg"></div>
             <div class="carousel-slide"><img src="img/fibra2.jpeg"></div>
+            <div class="carousel-slide"><img src="img/fibra3.jpeg"></div>
+            <div class="carousel-slide"><img src="img/fibra4.jpeg"></div>
           </div>
           <button class="carousel-btn next" data-carousel-next>›</button>
-          <div class="carousel-dots"></div>
+          <div class="carousel-dots" data-carousel-dots></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Esmaltação em gel</h3>
+        <div class="carousel" data-carousel>
+          <button class="carousel-btn prev" data-carousel-prev>‹</button>
+          <div class="carousel-track" data-carousel-track>
+            <div class="carousel-slide"><img src="img/esmalte1.jpeg"></div>
+            <div class="carousel-slide"><img src="img/esmalte2.jpeg"></div>
+            <div class="carousel-slide"><img src="img/esmalte3.jpeg"></div>
+            <div class="carousel-slide"><img src="img/esmalte4.jpeg"></div>
+          </div>
+          <button class="carousel-btn next" data-carousel-next>›</button>
+          <div class="carousel-dots" data-carousel-dots></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Banho de gel</h3>
+        <div class="carousel" data-carousel>
+          <button class="carousel-btn prev" data-carousel-prev>‹</button>
+          <div class="carousel-track" data-carousel-track>
+            <div class="carousel-slide"><img src="img/banho1.jpeg"></div>
+            <div class="carousel-slide"><img src="img/banho2.jpeg"></div>
+            <div class="carousel-slide"><img src="img/banho3.jpeg"></div>
+            <div class="carousel-slide"><img src="img/banho4.jpeg"></div>
+          </div>
+          <button class="carousel-btn next" data-carousel-next>›</button>
+          <div class="carousel-dots" data-carousel-dots></div>
         </div>
       </div>
 
@@ -137,7 +161,6 @@
     <div id="lista-avaliacoes"></div>
 
     <div class="form-avaliacao">
-
       <input type="text" id="nome" placeholder="Seu nome">
       <textarea id="comentario" placeholder="Seu comentário"></textarea>
 
@@ -150,7 +173,6 @@
       </div>
 
       <button onclick="enviarAvaliacao()">Enviar avaliação</button>
-
     </div>
 
   </div>
@@ -158,12 +180,22 @@
 
 <footer class="rodape">
   <div class="container rodape-flex">
-    <p>Conteúdo digital. Acesso após pagamento.</p>
+
+    <div class="rodape-brand">
+      <img class="rodape-logo" src="img/logo.png">
+      <p class="rodape-txt">Conteúdo digital. Acesso após confirmação do pagamento.</p>
+    </div>
+
+    <div class="rodape-links">
+      <a class="instagram-link" href="https://instagram.com/studio.gabidummer.nails" target="_blank">Instagram</a>
+      <a class="whats-link" href="https://wa.me/5519991046126" target="_blank">WhatsApp</a>
+    </div>
+
   </div>
 </footer>
 
 <script>
-(function(){
+document.addEventListener("DOMContentLoaded", function(){
 
   // CARROSSEL
   function setupCarousel(root){
@@ -183,7 +215,7 @@
 
   document.querySelectorAll('[data-carousel]').forEach(setupCarousel);
 
-  // ⭐ AVALIAÇÃO
+  // ESTRELAS
   let notaSelecionada = 0;
   const estrelas = document.querySelectorAll('#estrelas span');
 
@@ -197,6 +229,7 @@
     };
   });
 
+  // ENVIAR
   window.enviarAvaliacao = function(){
     const nome = document.getElementById('nome').value;
     const comentario = document.getElementById('comentario').value;
@@ -220,11 +253,10 @@
 
     lista.forEach(av=>{
       container.innerHTML += `
-        <div>
+        <div class="dep-card">
           <strong>${av.nome}</strong>
           <p>${av.comentario}</p>
           <div>${'⭐'.repeat(av.estrelas)}</div>
-          <hr>
         </div>
       `;
     });
@@ -232,7 +264,7 @@
 
   mostrarAvaliacoes();
 
-})();
+});
 </script>
 
 </body>
