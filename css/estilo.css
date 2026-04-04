@@ -469,3 +469,66 @@ body{
   border-radius:12px;
   box-shadow:0 4px 10px rgba(0,0,0,0.08);
 }
+/* ===== AVALIAÇÕES ===== */
+
+.avaliacoes{
+  padding:40px 20px;
+  text-align:center;
+}
+
+#lista-avaliacoes{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:15px;
+  margin-bottom:20px;
+}
+
+.dep-card{
+  background:#fff;
+  padding:15px;
+  border-radius:12px;
+  width:280px;
+  box-shadow:0 5px 15px rgba(0,0,0,0.1);
+  text-align:left;
+}
+
+.form-avaliacao{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:10px;
+}
+
+.form-avaliacao input,
+.form-avaliacao textarea{
+  width:300px;
+  padding:10px;
+  border-radius:8px;
+  border:1px solid #ccc;
+}
+
+.estrelas{
+  display:flex;
+  gap:5px;
+  font-size:30px;
+  cursor:pointer;
+}
+
+.estrelas span{
+  color:#ccc;
+  transition:0.2s;
+}
+
+.estrelas span:hover{
+  transform:scale(1.2);
+}
+
+.form-avaliacao button{
+  background:#ff2e93;
+  color:#fff;
+  border:none;
+  padding:10px 20px;
+  border-radius:8px;
+  cursor:pointer;
+}
