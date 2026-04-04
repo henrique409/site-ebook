@@ -215,6 +215,73 @@ document.addEventListener("DOMContentLoaded", function(){
 
   document.querySelectorAll('[data-carousel]').forEach(setupCarousel);
 
+  // ⭐ ESTRELAS (CORRIGIDO)
+  let notaSelecionada = 0;
+  const estrelas = document.querySelectorAll('#estrelas span');
+
+  estrelas.forEach(star=>{
+    star.addEventListener('click', ()=>{
+      notaSelecionada = parseInt(star.dataset.value);
+
+      estrelas.forEach(s=>{
+        s.style.color = parseInt(s.dataset.value) <= notaSelecionada ? '#ffc107' : '#ccc';
+      });
+    });
+  });
+
+  // 🚀 ENVIAR AVALIAÇÃO (CORRIGIDO)
+  window.enviarAvaliacao = function(){
+    const nome = document.getElementById('nome').value.trim();
+    const comentario = document.getElementById('comentario').value.trim();
+
+    if(!nome || !comentario || notaSelecionada === 0){
+      alert('Preencha tudo e selecione as estrelas!');
+      return;
+    }
+
+    const lista = JSON.parse(localStorage.getItem('avaliacoes')) || [];
+
+    lista.push({
+      nome,
+      comentario,
+      estrelas: notaSelecionada
+    });
+
+    localStorage.setItem('avaliacoes', JSON.stringify(lista));
+
+    // limpar campos
+    document.getElementById('nome').value = '';
+    document.getElementById('comentario').value = '';
+    notaSelecionada = 0;
+
+    estrelas.forEach(s => s.style.color = '#ccc');
+
+    mostrarAvaliacoes();
+  }
+
+  // 📌 MOSTRAR AVALIAÇÕES
+  function mostrarAvaliacoes(){
+    const lista = JSON.parse(localStorage.getItem('avaliacoes')) || [];
+    const container = document.getElementById('lista-avaliacoes');
+
+    container.innerHTML='';
+
+    lista.forEach(av=>{
+      container.innerHTML += `
+        <div class="dep-card" style="margin-top:15px;">
+          <strong>${av.nome}</strong>
+          <p>${av.comentario}</p>
+          <div style="color:#ffc107;">${'★'.repeat(av.estrelas)}</div>
+        </div>
+      `;
+    });
+  }
+
+  mostrarAvaliacoes();
+
+});
+</script>
+
   // ESTRELAS
   let notaSelecionada = 0;
   const estrelas = document.querySelectorAll('#estrelas span');
