@@ -215,19 +215,23 @@ document.addEventListener("DOMContentLoaded", function(){
 
   document.querySelectorAll('[data-carousel]').forEach(setupCarousel);
 
-  // ESTRELAS
-  let notaSelecionada = 0;
-  const estrelas = document.querySelectorAll('#estrelas span');
+// ESTRELAS
+let notaSelecionada = 0;
+const estrelas = document.querySelectorAll('#estrelas span');
 
-  estrelas.forEach(star=>{
-    star.onclick=()=>{
-      notaSelecionada = star.dataset.value;
+estrelas.forEach(star=>{
+  star.onclick = () => {
+    notaSelecionada = Number(star.dataset.value); // 🔥 CORREÇÃO
 
-      estrelas.forEach(s=>{
-        s.style.color = s.dataset.value <= notaSelecionada ? 'gold' : '#ccc';
-      });
-    };
-  });
+    estrelas.forEach(s=>{
+      if(Number(s.dataset.value) <= notaSelecionada){
+        s.style.color = 'gold';
+      } else {
+        s.style.color = '#ccc';
+      }
+    });
+  };
+});
 
   // ENVIAR
   window.enviarAvaliacao = function(){
@@ -243,7 +247,13 @@ document.addEventListener("DOMContentLoaded", function(){
     lista.push({nome, comentario, estrelas:notaSelecionada});
     localStorage.setItem('avaliacoes', JSON.stringify(lista));
 
-    mostrarAvaliacoes();
+    document.getElementById('nome').value = '';
+document.getElementById('comentario').value = '';
+notaSelecionada = 0;
+
+estrelas.forEach(s => s.style.color = '#ccc');
+
+mostrarAvaliacoes();
   }
 
   function mostrarAvaliacoes(){
