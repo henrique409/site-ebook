@@ -428,3 +428,44 @@ body{
   color:#777;
   margin-top:5px;
 }
+.avaliacoes{
+  text-align:center;
+  margin:60px auto;
+}
+
+.form-avaliacao input,
+.form-avaliacao textarea{
+  width:280px;
+  padding:10px;
+  margin:5px;
+  border-radius:8px;
+  border:1px solid #ddd;
+}
+
+.estrelas span{
+  font-size:30px;
+  cursor:pointer;
+  color:#ccc;
+}
+
+.estrelas span.ativo{
+  color:gold;
+}
+
+.form-avaliacao button{
+  margin-top:10px;
+  padding:10px 20px;
+  border:none;
+  background:#ff2d95;
+  color:#fff;
+  border-radius:10px;
+}
+
+.card-avaliacao{
+  background:#fff;
+  padding:15px;
+  margin:10px auto;
+  width:300px;
+  border-radius:12px;
+  box-shadow:0 4px 10px rgba(0,0,0,0.08);
+}
