@@ -16,7 +16,7 @@
   <div class="topo-container">
 
     <a class="brand" href="#topo">
-      <img src="img/logo.png">
+      <img src="img/logo.png" alt="Logo Studio">
       <span class="nome-studio">studio.gabidummer.nails</span>
     </a>
 
@@ -43,18 +43,20 @@
     <h1>3 Técnicas de Alongamento em Gel — passo a passo profissional</h1>
 
     <p>
-      Aprenda Fibra de vidro, Esmaltação em gel e Banho de gel.
+      Aprenda as técnicas mais pedidas no salão e execute com mais segurança:
+      <strong>Fibra de vidro</strong>, <strong>Esmaltação em gel</strong> e <strong>Banho de gel</strong>.
     </p>
 
     <div class="topo-profissional-texto">
       <h3>Sobre a profissional</h3>
       <p>
-        Gabriela Dummer é apaixonada pela área da beleza e ajuda mulheres a evoluírem com técnicas profissionais.
+        Gabriela Dummer é apaixonada pela área da beleza...
       </p>
     </div>
 
     <!-- CARROSSEL -->
     <div class="carousel prof-carousel" data-carousel>
+
       <button class="carousel-btn prev" data-carousel-prev>‹</button>
 
       <div class="carousel-track" data-carousel-track>
@@ -65,102 +67,146 @@
 
       <button class="carousel-btn next" data-carousel-next>›</button>
       <div class="carousel-dots" data-carousel-dots></div>
+
     </div>
 
     <a href="#" class="botao-comprar">QUERO COMPRAR AGORA</a>
 
-    <div class="pagamentos">
-      <img src="img/icone-pix.png">
-      <img src="img/icone-cartao.png">
-      <img src="img/icone-boleto.png">
-      <span>Pagamento seguro</span>
-    </div>
-
   </div>
 </section>
 
-<!-- AVALIAÇÕES (NOVO) -->
+<!-- TECNICAS (SEM ALTERAR) -->
+<section class="secao">
+  <div class="container">
+    <h2>O que você vai aprender</h2>
+
+    <div class="cards-grid">
+      <div class="card">
+        <h3>Fibra de vidro</h3>
+      </div>
+
+      <div class="card">
+        <h3>Esmaltação em gel</h3>
+      </div>
+
+      <div class="card">
+        <h3>Banho de gel</h3>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ⭐⭐⭐ AVALIAÇÃO PROFISSIONAL (NOVA) -->
 <section class="avaliacoes">
-  <h2>⭐ Avaliações das clientes</h2>
+  <h2>Avaliações das clientes</h2>
 
   <div id="lista-avaliacoes"></div>
 
   <div class="form-avaliacao">
     <input type="text" id="nome" placeholder="Seu nome">
+
     <textarea id="comentario" placeholder="Seu comentário"></textarea>
 
     <div class="estrelas" id="estrelas">
-      <span data-valor="1">★</span>
-      <span data-valor="2">★</span>
-      <span data-valor="3">★</span>
-      <span data-valor="4">★</span>
-      <span data-valor="5">★</span>
+      <span data-star="1">★</span>
+      <span data-star="2">★</span>
+      <span data-star="3">★</span>
+      <span data-star="4">★</span>
+      <span data-star="5">★</span>
     </div>
 
-    <button onclick="enviarAvaliacao()">Enviar avaliação</button>
+    <button onclick="enviarAvaliacao()">Enviar</button>
   </div>
 </section>
 
 <footer class="rodape">
-  <p style="text-align:center;">Studio Gabriela ©</p>
+  <p style="text-align:center;">© Studio Gabriela</p>
 </footer>
 
-<!-- JS -->
 <script>
-let notaSelecionada = 0;
+// CARROSSEL
+document.querySelectorAll("[data-carousel]").forEach(carousel=>{
+  const track = carousel.querySelector("[data-carousel-track]");
+  const slides = carousel.querySelectorAll(".carousel-slide");
+  const next = carousel.querySelector("[data-carousel-next]");
+  const prev = carousel.querySelector("[data-carousel-prev]");
 
+  let i=0;
+
+  function update(){
+    track.style.transform = "translateX(-"+i*100+"%)";
+  }
+
+  next.onclick = ()=>{
+    i = (i+1)%slides.length;
+    update();
+  };
+
+  prev.onclick = ()=>{
+    i = (i-1+slides.length)%slides.length;
+    update();
+  };
+});
+
+// ⭐ AVALIAÇÃO
+let nota = 0;
 const estrelas = document.querySelectorAll("#estrelas span");
 
-estrelas.forEach(star => {
-  star.addEventListener("click", () => {
-    notaSelecionada = star.dataset.valor;
-    estrelas.forEach(s => s.classList.remove("ativo"));
-    for(let i=0;i<notaSelecionada;i++){
-      estrelas[i].classList.add("ativo");
-    }
-  });
+estrelas.forEach(star=>{
+  star.onclick = ()=>{
+    nota = star.dataset.star;
+
+    estrelas.forEach(s=>{
+      s.style.color = s.dataset.star <= nota ? "gold" : "#ccc";
+    });
+  };
 });
 
 function enviarAvaliacao(){
   const nome = document.getElementById("nome").value;
   const comentario = document.getElementById("comentario").value;
 
-  if(!nome || !comentario || notaSelecionada==0){
+  if(!nome || !comentario || nota==0){
     alert("Preencha tudo!");
     return;
   }
 
-  const nova = {nome, comentario, nota: notaSelecionada};
-
-  let avaliacoes = JSON.parse(localStorage.getItem("avaliacoes")) || [];
-  avaliacoes.push(nova);
-
-  localStorage.setItem("avaliacoes", JSON.stringify(avaliacoes));
-
-  mostrarAvaliacoes();
-
-  document.getElementById("nome").value = "";
-  document.getElementById("comentario").value = "";
-}
-
-function mostrarAvaliacoes(){
   const lista = document.getElementById("lista-avaliacoes");
-  lista.innerHTML = "";
 
-  const avaliacoes = JSON.parse(localStorage.getItem("avaliacoes")) || [];
+  const card = document.createElement("div");
+  card.className = "dep-card";
 
-  avaliacoes.reverse().forEach(av => {
-    lista.innerHTML += `
-      <div class="card-avaliacao">
-        <strong>${av.nome}</strong>
-        <p>${av.comentario}</p>
-        <div>⭐ ${"★".repeat(av.nota)}</div>
-      </div>
-    `;
-  });
+  card.innerHTML = `
+    <p>"${comentario}"</p>
+    <strong>${nome}</strong><br>
+    <span>${"★".repeat(nota)}</span>
+  `;
+
+  lista.appendChild(card);
+
+  // salvar
+  let dados = JSON.parse(localStorage.getItem("avaliacoes") || "[]");
+  dados.push({nome, comentario, nota});
+  localStorage.setItem("avaliacoes", JSON.stringify(dados));
 }
 
-mostrarAvaliacoes();
+// carregar
+window.onload = ()=>{
+  let dados = JSON.parse(localStorage.getItem("avaliacoes") || "[]");
+
+  dados.forEach(av=>{
+    const card = document.createElement("div");
+    card.className = "dep-card";
+
+    card.innerHTML = `
+      <p>"${av.comentario}"</p>
+      <strong>${av.nome}</strong><br>
+      <span>${"★".repeat(av.nota)}</span>
+    `;
+
+    document.getElementById("lista-avaliacoes").appendChild(card);
+  });
+};
 </script>
 
 </body>
