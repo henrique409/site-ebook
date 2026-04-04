@@ -172,8 +172,7 @@
         <span data-value="5">★</span>
       </div>
 
-      <button onclick="enviarAvaliacao()">Enviar avaliação</button>
-    </div>
+<button id="btn-avaliar">Enviar avaliação</button>    </div>
 
   </div>
 </section>
@@ -255,7 +254,37 @@ estrelas.forEach(s => s.style.color = '#ccc');
 
 mostrarAvaliacoes();
   }
+// BOTÃO FUNCIONANDO
+document.getElementById("btn-avaliar").addEventListener("click", function(){
 
+  const nome = document.getElementById('nome').value;
+  const comentario = document.getElementById('comentario').value;
+
+  if(!nome || !comentario || notaSelecionada == 0){
+    alert('Preencha tudo!');
+    return;
+  }
+
+  const lista = JSON.parse(localStorage.getItem('avaliacoes')) || [];
+
+  lista.push({
+    nome: nome,
+    comentario: comentario,
+    estrelas: notaSelecionada
+  });
+
+  localStorage.setItem('avaliacoes', JSON.stringify(lista));
+
+  // limpa campos
+  document.getElementById('nome').value = '';
+  document.getElementById('comentario').value = '';
+  notaSelecionada = 0;
+
+  estrelas.forEach(s => s.style.color = '#ccc');
+
+  mostrarAvaliacoes();
+
+});
   function mostrarAvaliacoes(){
     const lista = JSON.parse(localStorage.getItem('avaliacoes')) || [];
     const container = document.getElementById('lista-avaliacoes');
