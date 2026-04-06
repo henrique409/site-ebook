@@ -7,7 +7,7 @@
 
 .hero {
     height: 100vh;
-    background: url('imagens/logo.jpeg') no-repeat center center/cover;
+    background: url('imagens/logo.png') no-repeat center center/cover;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -27,7 +27,7 @@
 }
 
 h1 {
-    color: #d63384; /* rosa */
+    color: #d63384;
     font-size: 32px;
     margin-bottom: 15px;
 }
