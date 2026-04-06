@@ -37,8 +37,9 @@ body {
 /* LOGO */
 .logo {
     width: 180px;
+    height: auto;
     margin-bottom: 25px;
-    filter: drop-shadow(0 5px 10px rgba(0,0,0,0.1));
+    object-fit: contain;
 }
 
 /* TÍTULO */
