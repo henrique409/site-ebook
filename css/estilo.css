@@ -34,10 +34,9 @@ body {
 
 /* LOGO */
 .logo {
-    width: 120px;
-    margin-bottom: 20px;
-
-    animation: aparecer 1.2s ease;
+    width: 180px;
+    margin-bottom: 25px;
+    filter: drop-shadow(0 5px 10px rgba(0,0,0,0.1));
 }
 
 /* TÍTULO */
