@@ -9,34 +9,39 @@ body {
     font-family: 'Poppins', sans-serif;
 }
 
-/* FUNDO COM DEGRADE (sem imagem borrada) */
+/* FUNDO COM DEGRADE */
 .hero {
     height: 100vh;
     background: linear-gradient(135deg, #ffe4ec, #ffffff);
     display: flex;
     align-items: center;
     justify-content: center;
+    position: relative;
 }
 
 /* CAIXA COM ANIMAÇÃO */
 .overlay {
     background-color: rgba(255, 255, 255, 0.95);
-    padding: 60px 40px; /* aumentei espaço */
+    padding: 60px 40px;
     text-align: center;
     border-radius: 20px;
-    max-width: 650px; /* aumentei */
+    max-width: 650px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.1);
     backdrop-filter: blur(10px);
-}
+
     /* ANIMAÇÃO */
     animation: subir 1s ease forwards;
 }
 
-/* LOGO */
+/* LOGO (CORRIGIDA) */
 .logo {
     width: 220px;
+    height: auto;
+    object-fit: contain;
+    margin-bottom: 25px;
     filter: contrast(1.05) brightness(1.02);
 }
+
 /* TÍTULO */
 h1 {
     color: #d63384;
@@ -91,6 +96,8 @@ p {
         transform: scale(1);
     }
 }
+
+/* GALERIA */
 .galeria {
     display: flex;
     gap: 12px;
@@ -109,24 +116,19 @@ p {
 .galeria img:hover {
     transform: scale(1.1);
 }
+
+/* TEXTOS */
 .impacto {
     color: #d63384;
     font-weight: 600;
     margin-top: 10px;
     margin-bottom: 20px;
 }
+
 .autoridade {
     font-size: 14px;
     color: #777;
     margin-bottom: 20px;
-}
-.hero {
-    height: 100vh;
-    background: linear-gradient(135deg, #ffe4ec, #ffffff);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
 }
 
 /* IMAGENS LATERAIS */
@@ -135,6 +137,10 @@ p {
     top: 50%;
     transform: translateY(-50%);
     width: 250px;
+}
+
+.lado img {
+    width: 100%;
     border-radius: 20px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.15);
 }
@@ -147,24 +153,7 @@ p {
     right: 40px;
 }
 
-/* RESPONSIVO (IMPORTANTE) */
-@media (max-width: 900px) {
-    .lado {
-        display: none;
-    }
-}
-.lado {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 250px;
-}
-
-.lado img {
-    width: 100%;
-    border-radius: 20px;
-}
-
+/* TEXTO NA IMAGEM */
 .texto-img {
     position: absolute;
     bottom: 10px;
@@ -176,4 +165,11 @@ p {
     border-radius: 10px;
     font-size: 14px;
     text-align: center;
+}
+
+/* RESPONSIVO */
+@media (max-width: 900px) {
+    .lado {
+        display: none;
+    }
 }
