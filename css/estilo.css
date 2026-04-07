@@ -34,12 +34,9 @@ body {
 
 /* LOGO */
 .logo {
-    width: 200px; /* pode aumentar */
-    height: auto;
-    margin-bottom: 25px;
-    object-fit: contain;
+    width: 220px;
+    filter: contrast(1.05) brightness(1.02);
 }
-
 /* TÍTULO */
 h1 {
     color: #d63384;
