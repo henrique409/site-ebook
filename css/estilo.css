@@ -125,3 +125,36 @@ p {
     color: #777;
     margin-bottom: 20px;
 }
+.hero {
+    height: 100vh;
+    background: linear-gradient(135deg, #ffe4ec, #ffffff);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+/* IMAGENS LATERAIS */
+.lado {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 250px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+}
+
+.esquerda {
+    left: 40px;
+}
+
+.direita {
+    right: 40px;
+}
+
+/* RESPONSIVO (IMPORTANTE) */
+@media (max-width: 900px) {
+    .lado {
+        display: none;
+    }
+}
